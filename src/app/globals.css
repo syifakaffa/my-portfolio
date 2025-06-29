@@ -19,8 +19,121 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Orbit Animation */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-animation {
+  animation: orbit 20s linear infinite;
+}
+
+/* Project Card Flip Animation */
+.flip-card {
+  perspective: 1000px;
+  height: 100%;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: 0.75rem; /* rounded-xl */
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background-color: #f8fafc;
+}
+
+.flip-card-back {
+  background-color: #f8fafc;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Project card tech stack styles */
+.tech-stack-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  margin-top: auto;
+}
+
+.tech-stack-items {
+  display: flex;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.tech-stack-item {
+  background-color: #fff1e6;
+  color: #dd6b20;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tech-stack-more {
+  background-color: #e6ffee;
+  color: #059669;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
 }
