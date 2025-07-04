@@ -7,6 +7,7 @@ export default function Home() {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('all');
+  const [activeExperienceTab, setActiveExperienceTab] = useState('professional');
   const fullText = 'Syifa Kaffa Billah';
 
   useEffect(() => {
@@ -77,7 +78,7 @@ export default function Home() {
       name = 'Repository';
       icon = (
         <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       );
     } else if (type === 'slideUrl') {
@@ -85,6 +86,13 @@ export default function Home() {
       icon = (
         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      );
+    } else if (type === 'codeUrl') {
+      name = 'Code';
+      icon = (
+        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       );
     }
@@ -105,7 +113,7 @@ export default function Home() {
               <span className="font-bold text-xl bg-gradient-to-r from-orange-600 to-green-600 bg-clip-text text-transparent">SYIFA</span>
             </div>
             
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
               {[
                 { id: 'about', label: 'Home' },
                 { id: 'projects', label: 'Project' },
@@ -124,6 +132,16 @@ export default function Home() {
                   {label}
                 </button>
               ))}
+              
+              <button 
+                onClick={downloadCV}
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <span>Unduh CV</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -140,6 +158,7 @@ export default function Home() {
         
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+
             <div className="space-y-6 animate-fade-in-up">
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4 animate-slide-in-left">
@@ -158,25 +177,11 @@ export default function Home() {
               solutions as a Software Engineer.
               </p>
               
-              <div className="flex items-center space-x-4 animate-slide-in-up">
-                <button 
-                  onClick={downloadCV}
-                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                >
-                  <span>Unduh CV</span>
-                  <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-md">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-              
-              <div className="flex space-x-4 animate-slide-in-up" style={{animationDelay: '0.2s'}}>
+              <div className="flex space-x-4 animate-slide-in-up">
                 <a href="https://github.com/syifakaffa" target="_blank" rel="noopener noreferrer" 
                    className="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.30 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
                 </a>
                 <a href="https://www.linkedin.com/in/syifa-kaffa-billah-618557249/" target="_blank" rel="noopener noreferrer" 
@@ -213,7 +218,7 @@ export default function Home() {
                 <div className="absolute inset-12 w-72 h-72 bg-gradient-to-br from-orange-400 via-orange-500 to-green-500 rounded-full shadow-2xl overflow-hidden ring-4 ring-white/50">
                   <div className="w-full h-full rounded-full overflow-hidden">
                     <img 
-                      src="/foto_syifa.png" 
+                      src="/syifa.jpg" 
                       alt="Syifa Kaffa" 
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                     />
@@ -233,28 +238,37 @@ export default function Home() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Projects</h2>
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-600 to-green-500 bg-clip-text text-transparent mb-6">
+              My Projects
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Explore my portfolio of innovative solutions, from web applications to data science projects that solve real-world problems
+            </p>
+          </div>
           
           {/* Tab Navigation */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-12 px-4">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-white/50">
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 {[
-                  { id: 'all', label: 'All Projects', count: 9 },
-                  { id: 'software', label: 'Software Development', count: 8 },
-                  { id: 'data-science', label: 'Data Science', count: 1 }
+                  { id: 'all', label: 'All Projects', shortLabel: 'All', count: 9 },
+                  { id: 'software', label: 'Software Dev', shortLabel: 'Software', count: 8 },
+                  { id: 'data-science', label: 'Data Science', shortLabel: 'Data', count: 1 }
                 ].map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 ${
+                    className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 text-sm min-h-[44px] whitespace-nowrap ${
                       activeTab === tab.id
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg transform scale-105'
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg transform scale-[1.02]'
                         : 'text-gray-700 hover:text-orange-500 hover:bg-orange-50'
                     }`}
                   >
-                    <span>{tab.label}</span>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="sm:hidden">{tab.shortLabel}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full min-w-[24px] text-center ${
                       activeTab === tab.id 
                         ? 'bg-white/20 text-white' 
                         : 'bg-gray-200 text-gray-600'
@@ -275,7 +289,7 @@ export default function Home() {
                 category: "software",
                 description: "Wisuda UI is a graduation registration system developed using Vue.js and TypeScript. I designed the mockup in Figma, built key features like role-based navigation, dynamic reports, and content management, and integrated the frontend with REST APIs before deploying it to the development server.",
                 image: "/project/wisuda-ui.png",
-                techStack: ["Vue", "Typescript", "Nuxt", "TailwindCSS", "Vuetify", "Figma", "GitLab CI/CD", "Yaak", "Postman", "Keycloak"],
+                techStack: ["Vue", "Figma", "Nuxt", "Postman", "TailwindCSS", "Vuetify", "Typescript", "GitLab CI/CD", "Keycloak"],
               },
               {
                 title: "Parkir UI",
@@ -283,7 +297,7 @@ export default function Home() {
                 category: "software",
                 description: "Parkir UI is a parking subscription system for UI's academic community and partners. I was responsible for designing the frontend with Vue.js and TypeScript, building role-based interfaces, managing parking subscriptions, and integrating the system with REST APIs and Keycloak-based authentication.",
                 image: "/project/parkir-ui.png",
-                techStack: ["Vue", "Typescript", "Nuxt", "TailwindCSS", "Vuetify", "Figma", "GitLab CI/CD", "Yaak", "Postman", "Keycloak"],
+                techStack: ["Vue", "Nuxt", "Keycloak", "Yaak", "Vuetify", "Figma", "Typescript", "GitLab CI/CD", "TailwindCSS"],
               },
               {
                 title: "IAST Connect",
@@ -300,8 +314,29 @@ export default function Home() {
                 category: "software",
                 description: "Built security-focused microservices web application following OWASP Top 10 guidelines in 5-member team. Developed Next.js frontend and Spring Boot backend with separated authentication service architecture.",
                 image: "/project/brewforce-attack.png",
-                techStack: ["Next.js", "Django", "JavaScript", "TailwindCSS", "TypeScript"],
+                techStack: ["Next.js", "Spring Boot", "Docker", "Kubernetes", "GitLab CI/CD", "Postman", "Draw.io", "Burp Suite", "JavaScript", "TailwindCSS", "TypeScript"],
                 demoUrl: "https://kelompok-7-brewforce-fe.pkpl.cs.ui.ac.id/",
+              },
+              {
+                title: "Lodging Reservation Analytics",
+                role: "Data Scientist",
+                category: "data-science",
+                description: "Collaborated in 3-member data science team to deliver comprehensive analytics solution for hospitality industry. Developed ML classification model (F1: 0.84) for booking cancellation prediction and regression model for pricing optimization.",
+                image: "/project/lodging.png",
+                techStack: ["Python", "Pandas", "Scikit-learn", "Seaborn", "Matplotlib", "NumPy", "Google Colab"],
+                demoUrl: "https://drive.google.com/file/d/1B8z6nRz9LCRdaxFhry_et5YJwJoRbVr3/view?usp=sharing",
+                slideUrl: "https://www.canva.com/design/DAGDMwW1kPk/o4cYmzHqqxIJg82Ep1J82w/edit?utm_content=DAGDMwW1kPk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+              },
+              {
+                title: "Mario Detection in Video",
+                role: "Computer Vision Engineer",
+                category: "data-science",
+                description: "Developed a real-time video analysis system to detect Mario characters using YOLOv5 deep learning model. The system processes MP4 video files and identifies Mario characters across different environmental conditions, achieving 89% accuracy with 100% recall rate and average IoU of 0.9023 in stable conditions while successfully handling challenging scenarios like lighting variations and object rotation.",
+                image: "/project/mario.png",
+                techStack: ["Python", "Python", "OpenCV", "YOLOv5", "PyTorch", "Google Colab"],
+                codeUrl: "https://colab.research.google.com/drive/18IWbFNvaF4RRcG4gn-x8E2H9YGmzP8Eh?usp=sharing",
+                slideUrl: "https://docs.google.com/document/d/1FmVNKmpD7EJXgbjqRf0YrP8ZjfnFZUQ6/edit?usp=sharing&ouid=105495481974024300575&rtpof=true&sd=true",
+                demoUrl: "https://drive.google.com/drive/folders/1JeJi30VmTouscriHdHNvkk419f0LnE_F"
               },
               {
                 title: "ReadHub Web",
@@ -329,7 +364,7 @@ export default function Home() {
                 category: "software",
                 description: "Second Treasurer is an online thrift shop where users can buy and sell various fashion items, both new and used, by creating a listing for the item they want to sell. Essentially, the app acts as a middleman in the sales transactions, involving three main roles: a Buyer, a Seller, and a Staff member. This project was developed collaboratively as part of the Advanced Programming course.",
                 image: "/project/second-treasure.png",
-                techStack: ["Next.js", "JavaScript", "TailwindCSS", "TypeScript", "Java Spring Boot", "Docker", "Kubernetes", "GitLab CI/CD", "Postman", "Draw.io", "Burp Suite"],
+                techStack: ["Next.js", "Django", "JavaScript", "TailwindCSS", "TypeScript"],
                 demoUrl: "https://frontend-adpro-c2.vercel.app/",
                 slideUrl: "https://www.canva.com/design/DAGGmKWMIwE/KCSC2JxPSMefoikyPiW10Q/edit?utm_content=DAGGmKWMIwE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
               },
@@ -342,16 +377,6 @@ export default function Home() {
                 techStack: ["SQL", "Django", "HTML", "BootStrap CSS", "JavaScript"],
                 repoUrl: "https://github.com/marmut-b7/marmut-tk3"
               },
-              {
-                title: "Lodging Reservation Analytics",
-                role: "Data Scientist",
-                category: "data-science",
-                description: "Collaborated in 3-member data science team to deliver comprehensive analytics solution for hospitality industry. Developed ML classification model (F1: 0.84) for booking cancellation prediction and regression model for pricing optimization.",
-                image: "/project/lodging.png",
-                techStack: ["Python", "Pandas", "Scikit-learn", "Seaborn", "Matplotlib", "NumPy", "Google Colab"],
-                demoUrl: "https://drive.google.com/file/d/1B8z6nRz9LCRdaxFhry_et5YJwJoRbVr3/view?usp=sharing",
-                slideUrl: "https://www.canva.com/design/DAGDMwW1kPk/o4cYmzHqqxIJg82Ep1J82w/edit?utm_content=DAGDMwW1kPk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-              }
             ], activeTab).map((project, index) => (
               <div key={index} className="h-[420px] mb-6 animate-fade-in">
                 <div className="flip-card h-full">
@@ -380,25 +405,25 @@ export default function Home() {
                           <h3 className="text-xl font-semibold text-gray-800 mb-1">{project.title}</h3>
                           <p className="text-orange-500 font-medium mb-3 text-sm">{project.role}</p>
                           
-                          <div className="flex items-center overflow-hidden mb-4 mt-auto">
-                            <div className="flex space-x-2 overflow-hidden">
-                              {project.techStack.slice(0, 2).map((tech, techIndex) => (
+                          <div className="mb-4 mt-auto">
+                            <div className="flex flex-wrap gap-2">
+                              {project.techStack.slice(0, 5).map((tech, techIndex) => (
                                 <span key={techIndex} className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                                   {tech}
                                 </span>
                               ))}
+                              {project.techStack.length > 6 && (
+                                <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-medium">
+                                  + {project.techStack.length - 6} more
+                                </span>
+                              )}
                             </div>
-                            {project.techStack.length > 2 && (
-                              <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap ml-2 flex-shrink-0">
-                                + {project.techStack.length - 2} more
-                              </span>
-                            )}
                           </div>
                         </div>
                       </div>
                     </div>
                     
-                    {/* Back of Card - keep existing code */}
+                    {/* Back of Card*/}
                     <div className="flip-card-back shadow-lg border border-white/50">
                       <div className="p-6 flex flex-col h-full bg-white/90">
                         <h3 className="text-xl font-semibold text-gray-800 mb-2">{project.title}</h3>
@@ -458,82 +483,185 @@ export default function Home() {
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Experience</h2>
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-600 to-green-500 bg-clip-text text-transparent mb-6">
+              Experience
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              My professional journey and leadership roles that have shaped my skills and expertise in technology and teamwork
+            </p>
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-12">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-white/50">
+              <div className="flex space-x-2">
+                {[
+                  { id: 'professional', label: 'Professional', count: 2 },
+                  { id: 'additional', label: 'Additional', count: 3 }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveExperienceTab(tab.id)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 text-sm ${
+                      activeExperienceTab === tab.id
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg transform scale-105'
+                        : 'text-gray-700 hover:text-orange-500 hover:bg-orange-50'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full ${
+                      activeExperienceTab === tab.id 
+                        ? 'bg-white/20 text-white' 
+                        : 'bg-gray-200 text-gray-600'
+                    }`}>
+                      {tab.count}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
           
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Work Experience */}
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Professional Experience</h3>
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/50 mb-8 hover:shadow-2xl hover:scale-105 transition-all duration-300 hover:bg-white/90">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"/>
-                    </svg>
+          <div className="max-w-6xl mx-auto">
+            {/* Professional Experience Tab Content */}
+            {activeExperienceTab === 'professional' && (
+              <div className="grid gap-8 lg:gap-12">
+                {/* Frontend Engineer Intern */}
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/60 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 hover:bg-white animate-fade-in">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-6">
+                    <div className="flex items-center space-x-4 lg:space-x-6 mb-6 lg:mb-0">
+                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"/>
+                        </svg>
+                      </div>
+                      <div className="lg:hidden">
+                        <h4 className="text-xl font-bold text-gray-800">Frontend Engineer Intern</h4>
+                        <p className="text-green-600 font-semibold">Pusat Administrasi Universitas Indonesia</p>
+                        <p className="text-gray-500 text-sm">February 2025 - June 2025</p>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="hidden lg:block mb-4">
+                        <h4 className="text-2xl font-bold text-gray-800 mb-2">Frontend Engineer Intern</h4>
+                        <p className="text-green-600 font-semibold text-lg mb-1">Pusat Administrasi Universitas Indonesia</p>
+                        <p className="text-gray-500">February 2025 - June 2025</p>
+                      </div>
+                      <div className="space-y-3 text-gray-600">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Developed the frontend systems for the graduation and parking platforms using Vue.js and TypeScript.</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Built core features such as registration flows, role-based access control, parking subscriptions, and dynamic reporting.</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Integrated frontend with RESTful APIs and implemented route protection using role-based access middleware</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Designed UI mockups and user flows using Figma to align with responsive and component-based development.</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Frontend Engineer Intern</h3>
-                    <p className="text-orange-500 font-medium mb-2">Pusat Administrasi Universitas Indonesia</p>
-                    <p className="text-gray-600 mb-4">February 2025 - June 2025</p>
-                    <ul className="text-gray-600 space-y-2">
-                      <li>• Developed the frontend systems for the graduation and parking platforms using Vue.js and TypeScript.</li>
-                      <li>• Built core features such as registration flows, role-based access control, parking subscriptions, and dynamic reporting.</li>
-                      <li>• Integrated frontend with RESTful APIs and implemented route protection using role-based access middleware</li>
-                      <li>• Designed UI mockups and user flows using Figma to align with responsive and component-based development.</li>
-                    </ul>
+                </div>
+
+                {/* Teaching Assistant */}
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/60 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 hover:bg-white animate-fade-in">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-6">
+                    <div className="flex items-center space-x-4 lg:space-x-6 mb-6 lg:mb-0">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div className="lg:hidden">
+                        <h4 className="text-xl font-bold text-gray-800">Teaching Assistant</h4>
+                        <p className="text-blue-600 font-semibold">Faculty of Computer Science, University of Indonesia</p>
+                        <p className="text-gray-500 text-sm">Aug 2023 - June 2025</p>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="hidden lg:block mb-4">
+                        <h4 className="text-2xl font-bold text-gray-800 mb-2">Teaching Assistant</h4>
+                        <p className="text-blue-600 font-semibold text-lg mb-1">Faculty of Computer Science, University of Indonesia</p>
+                        <p className="text-gray-500">Aug 2023 - June 2025</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="text-gray-700 font-medium">Courses: Discrete Mathematics 2, Calculus 1, Numerical Analysis</p>
+                      </div>
+                      <div className="space-y-3 text-gray-600">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Assisted over 10 students per semester in understanding complex mathematical and computational concepts.</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Created comprehensive problem sets and study materials to support student learning.</p>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <p>Managed class operations including quiz supervision and administrative tracking.</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Additional Experience */}
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Additional Experience</h3>
-              <div className="space-y-4">
+            )}
+
+            {/* Additional Experience Tab Content */}
+            {activeExperienceTab === 'additional' && (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {[
-                  {
-                    title: "Teaching Assistant (Discrete Mathematics 2, Calculus 1, Numerical Analysis)",
-                    organization: "Faculty of Computer Science, University of Indonesia",
-                    period: "Aug 2023 - June 2025",
-                    description: "Assisted over 10 students per semester in understanding complex material, creating problem sets, and managing class operations including quiz supervision and administrative tracking."
-                  },
                   {
                     title: "Internal Control Staff",
                     organization: "Forum Ukhuwah dan Kajian Islam Fasilkom UI",
                     period: "Jan 2025 - Present",
-                    description: "Oversaw candidate bidding for organizational roles, maintained transparent selection procedures, and facilitated communication as MC and timekeeper during evaluation sessions."
+                    description: "Oversaw candidate bidding for organizational roles, maintained transparent selection procedures, and facilitated communication as MC and timekeeper during evaluation sessions.",
+                    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+                    color: "from-purple-500 to-purple-600"
                   },
                   {
                     title: "Human Resource Development Staff",
                     organization: "Forum Ukhuwah dan Kajian Islam Fasilkom UI",
                     period: "Aug 2023 - Jan 2024",
-                    description: "Led HR programs including 'Remember Your Friend' initiative to strengthen team bonding and acted as liaison between HR and QILC divisions."
+                    description: "Led HR programs including 'Remember Your Friend' initiative to strengthen team bonding and acted as liaison between HR and QILC divisions.",
+                    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                    color: "from-indigo-500 to-indigo-600"
                   },
                   {
                     title: "Secretary",
                     organization: "SIWAK-NG",
                     period: "Aug 2023 - December 2023",
-                    description: "Handled proposal drafting, activity reports, and official correspondence to support event execution and documentation."
+                    description: "Handled proposal drafting, activity reports, and official correspondence to support event execution and documentation.",
+                    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+                    color: "from-orange-500 to-orange-600"
                   }
                 ].map((experience, index) => (
-                  <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 hover:bg-white/90">
+                  <div key={index} className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/60 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 hover:bg-white animate-fade-in">
                     <div className="flex items-start space-x-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <div className={`w-12 h-12 bg-gradient-to-br ${experience.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={experience.icon} />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-gray-800 mb-1">{experience.title}</h4>
-                        <p className="text-orange-500 font-medium mb-1">{experience.organization}</p>
-                        <p className="text-gray-500 text-sm mb-2">{experience.period}</p>
-                        <p className="text-gray-600">{experience.description}</p>
+                        <h4 className="text-lg font-bold text-gray-800 mb-1">{experience.title}</h4>
+                        <p className="text-orange-600 font-semibold mb-1">{experience.organization}</p>
+                        <p className="text-gray-500 text-sm mb-3">{experience.period}</p>
+                        <p className="text-gray-600 leading-relaxed">{experience.description}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>      
+            )}
           </div>
         </div>
       </section>
@@ -546,7 +674,16 @@ export default function Home() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Contact</h2>
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-600 to-green-500 bg-clip-text text-transparent mb-6">
+              Let's Connect
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Ready to collaborate? Let's discuss opportunities, share ideas, or simply connect over our passion for technology
+            </p>
+          </div>
+
           <div className="max-w-2xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/50">
               <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Get In Touch</h3>
@@ -563,7 +700,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-gray-800 font-medium text-lg">Email</p>
-                    <p className="text-gray-600">syifa.kaffa@ui.ac.id</p>
+                    <p className="text-gray-600">syifakaffabillah@gmail.com</p>
                   </div>
                 </div>
                 
