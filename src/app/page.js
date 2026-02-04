@@ -173,7 +173,7 @@ export default function Home() {
               <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
               Syifa is a final-year Computer Science student at the University of Indonesia 
               with a strong interest in full-stack development and data science. She has experience 
-              delivering real-world applications for  institutional clients and aims to build impactful 
+              delivering real-world applications for  various clients and aims to build impactful 
               solutions as a Software Engineer.
               </p>
               
@@ -290,6 +290,7 @@ export default function Home() {
                 description: "Wisuda UI is a graduation registration system developed using Vue.js and TypeScript. I designed the mockup in Figma, built key features like role-based navigation, dynamic reports, and content management, and integrated the frontend with REST APIs before deploying it to the development server.",
                 image: "/project/wisuda-ui.png",
                 techStack: ["Vue", "Figma", "Nuxt", "Postman", "TailwindCSS", "Vuetify", "Typescript", "GitLab CI/CD", "Keycloak"],
+                demoUrl: "https://wisuda.ui.ac.id/",
               },
               {
                 title: "Parkir UI",
@@ -298,6 +299,15 @@ export default function Home() {
                 description: "Parkir UI is a parking subscription system for UI's academic community and partners. I was responsible for designing the frontend with Vue.js and TypeScript, building role-based interfaces, managing parking subscriptions, and integrating the system with REST APIs and Keycloak-based authentication.",
                 image: "/project/parkir-ui.png",
                 techStack: ["Vue", "Nuxt", "Keycloak", "Yaak", "Vuetify", "Figma", "Typescript", "GitLab CI/CD", "TailwindCSS"],
+              },
+              {
+                title: "HRIS AP2HI",
+                role: "Fullstack Engineer",
+                category: "software",
+                description: "AP2HI HRIS is a web-based Human Resource Information System developed for AP2HI to support organizational operations, featuring master data management for staff and organizational structures, attendance tracking, leave and activity requests, and incoming–outgoing correspondence within a centralized digital platform.",
+                image: "/project/ap2hi.png",
+                techStack: ["Springboot","Vue", "Nuxt", "PostgreSQL", "SQL", "Figma", "Typescript", "GitLab CI/CD"],
+                demoUrl: "https://hris.ap2hi.org/",
               },
               {
                 title: "IAST Connect",
@@ -540,14 +550,14 @@ export default function Home() {
                       <div className="lg:hidden">
                         <h4 className="text-xl font-bold text-gray-800">Frontend Engineer Intern</h4>
                         <p className="text-green-600 font-semibold">Pusat Administrasi Universitas Indonesia</p>
-                        <p className="text-gray-500 text-sm">February 2025 - June 2025</p>
+                        <p className="text-gray-500 text-sm">February 2025 - December 2025</p>
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="hidden lg:block mb-4">
                         <h4 className="text-2xl font-bold text-gray-800 mb-2">Frontend Engineer Intern</h4>
                         <p className="text-green-600 font-semibold text-lg mb-1">Pusat Administrasi Universitas Indonesia</p>
-                        <p className="text-gray-500">February 2025 - June 2025</p>
+                        <p className="text-gray-500">February 2025 - December 2025</p>
                       </div>
                       <div className="space-y-3 text-gray-600">
                         <div className="flex items-start space-x-3">
@@ -583,22 +593,22 @@ export default function Home() {
                       <div className="lg:hidden">
                         <h4 className="text-xl font-bold text-gray-800">Teaching Assistant</h4>
                         <p className="text-blue-600 font-semibold">Faculty of Computer Science, University of Indonesia</p>
-                        <p className="text-gray-500 text-sm">Aug 2023 - June 2025</p>
+                        <p className="text-gray-500 text-sm">Aug 2023 - Present</p>
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="hidden lg:block mb-4">
                         <h4 className="text-2xl font-bold text-gray-800 mb-2">Teaching Assistant</h4>
                         <p className="text-blue-600 font-semibold text-lg mb-1">Faculty of Computer Science, University of Indonesia</p>
-                        <p className="text-gray-500">Aug 2023 - June 2025</p>
+                        <p className="text-gray-500">Aug 2023 - Present</p>
                       </div>
                       <div className="mb-4">
-                        <p className="text-gray-700 font-medium">Courses: Discrete Mathematics 2, Calculus 1, Numerical Analysis</p>
+                        <p className="text-gray-700 font-medium">Courses: Software Engineering, Discrete Mathematics 2, Calculus 1, Numerical Analysis</p>
                       </div>
                       <div className="space-y-3 text-gray-600">
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <p>Assisted over 10 students per semester in understanding complex mathematical and computational concepts.</p>
+                          <p>Assisted over 15 students per semester in understanding complex mathematical and computational concepts.</p>
                         </div>
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
